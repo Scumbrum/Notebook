@@ -1,0 +1,25 @@
+.listItem {
+    list-style: none;
+}
+
+.listItem__item {
+    border-bottom: 2px solid var(--secondary);
+    padding: 15px 20px;
+}
+
+.listItem__item.active {
+    background-color: var(--background);
+}
+
+.item__description {
+    display: flex;
+}
+
+.item__description time {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.item__description p {
+    color: var(--text-secondary);
+}

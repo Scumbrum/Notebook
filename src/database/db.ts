@@ -1,6 +1,6 @@
 // db.js
 import Dexie, { Table } from 'dexie';
-import { Note } from '../models/database';
+import { Note } from '../models/databaseModels';
 
 class NoteDexie extends Dexie {
 

@@ -1,0 +1,49 @@
+.workspace {
+    flex-grow: 3;
+    padding: 20px 20px 60px;
+    position: relative;
+    height: calc(100vh - 50px);
+    overflow: auto;
+}
+
+.workspace__date {
+    width: 40%;
+    margin: 0 auto;
+    color: var(--text-secondary);
+    text-align: center;
+    font-weight: bold;
+}
+
+.workspace__title {
+    font-size: 28px;
+}
+
+.workspace__content {
+    margin-top: 30px;
+}
+
+.workspace__controllers {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    width: 40%;
+    transform: translate(-50%, 0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.workspace__edit, .workspace__delete  {
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 40%;
+    color: var(--paper);
+    background-color: var(--info);
+    cursor: pointer;
+}
+
+.workspace__delete {
+    background-color: var(--danger);
+}

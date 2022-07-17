@@ -3,8 +3,8 @@ import "./SearchBox.style.css"
 
 function SearchBox() {
   return (
-    <div >
-      SearchBox
+    <div className='searchBox'>  
+        <input className='searchBox__input' placeholder='Search'></input>
     </div>
   );
 }

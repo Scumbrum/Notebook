@@ -1,0 +1,14 @@
+.searchBox {
+    width: 30%;
+}
+.searchBox__input {
+    box-shadow: 0 2px 5px 0px var(--text-secondary);
+    background-color: var(--paper);
+    padding: 3px 15px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.searchBox__input::placeholder {
+    color: var(--text-secondary);
+}

@@ -1,11 +1,12 @@
 import React from 'react';
-import "SideBar.style.css"
+import ListItem from '../ListItem/ListItem.component';
+import "./SideBar.style.css"
 
 function SideBar() {
   return (
-    <div >
-      SideBar
-    </div>
+    <aside className='aside'>
+      <ListItem />
+    </aside>
   );
 }
 
