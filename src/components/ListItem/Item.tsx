@@ -1,12 +1,15 @@
 import React from 'react';
+import { useActions } from '../../hooks/useActions';
+import { ItemProps } from '../../models/componentsModels';
 
-function Item() {
+function Item({content, date, name, isSelected, id}:ItemProps) {
+  const {setSelected} = useActions()
   return (
-    <div className='listItem__item active'>
-      <h2 className='item__title'>Новая заметка</h2>
+    <div onClick={()=> setSelected(id)} className={'listItem__item ' + (isSelected && "active")}>
+      <h2 className='item__title'>{name}</h2>
       <div className='item__description'>
-        <time>17:02</time>
-        <p>No additional text</p>
+        <time>{date.getHours()}:{date.getMinutes()}</time>
+        <p>{content}</p>
       </div>
     </div>
   );
