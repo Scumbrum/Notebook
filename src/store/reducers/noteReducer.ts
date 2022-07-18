@@ -3,7 +3,7 @@ import { ActionsTypes, NoteReducerType, NotesAction } from "../../models/storeMo
 const initialValue:NoteReducerType = {
     searchQuery: "",
     notes: [],
-    selected: 1
+    selected: -1
 }
 
 export const noteReducer = (state:NoteReducerType = initialValue, action:NotesAction):NoteReducerType => {

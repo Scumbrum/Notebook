@@ -8,11 +8,11 @@ import "./ListItem.style.css"
 function ListItem() {
   const {notes, selected, searchQuery} = useTypedSelector(state => state.noteReducer)
 
-  const filteredNotes = useMemo<Note[]>(() => {
+  const filteredNotes = useMemo<(Note)[]>(() => {
     if(!searchQuery) {
-      return notes
+      return notes.filter(note => !!note) as Note[]
     }
-    return notes.filter(note => note.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    return notes.filter(note => note && note.name.toLowerCase().includes(searchQuery.toLowerCase())) as Note[]
   }, [notes, searchQuery])
   const renderNotes = () => 
     filteredNotes.map(note => (

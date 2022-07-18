@@ -1,7 +1,16 @@
+import {marked} from "marked"
+
 export const cutContent = (content:string):string => {
     let appender = "..."
-    if(content.length > 10) {
-        return content.substring(0,10) + appender
+    let parsedContent = htmlTextExtracor(content)
+    if(parsedContent.length > 10) {
+        return parsedContent.substring(0,10) + appender
     }
-    return content
+    return parsedContent
+}
+
+const htmlTextExtracor = (value:string):string => {
+    const htmlText = marked.parse(value)
+    const parsed = new DOMParser().parseFromString(htmlText, "text/html")
+    return parsed.body.innerText
 }

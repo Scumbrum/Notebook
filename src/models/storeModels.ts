@@ -2,7 +2,7 @@ import { Note } from "./databaseModels";
 
 export interface NoteReducerType {
     searchQuery: string;
-    notes: Note[],
+    notes: (Note | null)[],
     selected: number,
 }
 
@@ -14,7 +14,7 @@ export enum ActionsTypes {
 
 export interface SetNotesAction {
     type: ActionsTypes.SET_NOTES,
-    payload: Note[]
+    payload: (Note | null)[]
 }
 
 export interface SetSearchAction {
