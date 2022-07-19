@@ -20,6 +20,10 @@ export const insertUpdatedNote = (notes: (Note | null)[], selected: number, cont
 }
 
 export const deleteNote = (notes: (Note | null)[], selected: number):(Note | null)[] =>  {
+    const resonse = prompt("Вы уверены что хотите удалить(y/n)?")
+    if(resonse?.toLowerCase() !== "y") {
+        return notes
+    }
     return notes.map(note => {
         if(note && note.id === selected) {
             return null

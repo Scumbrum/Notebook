@@ -1,49 +1,56 @@
-import React, { useEffect} from 'react';
+import React, { useEffect, useState} from 'react';
+import { db } from '../database/db';
 import { useActions } from '../hooks/useActions';
-import { Note } from '../models/databaseModels';
+import { useTypedSelector } from '../hooks/useTypesSelector';
 import "./index.css"
 import SearchBox from './SearchBox/SearchBox.component';
 import SideBar from './SideBar/SideBar.component';
 import WorkSpace from './WorkSpace/WorkSpace.component';
 
-const notes:Note[] = [
-  {
-    id:1,
-    content:"hello1",
-    date: new Date().toString(),
-    name: "Record 1"
-  },
-  {
-    id:2,
-    content:"hello2",
-    date: new Date().toString(),
-    name: "Record 3"
-  },
-  {
-    id:3,
-    content:"hello3",
-    date: new Date().toString(),
-    name: "Record 2"
-  },
-]
-
 function App() {
   const {setNotes} = useActions()
-
+  const {notes, selected} = useTypedSelector(state => state.noteReducer)
+  const [loading, setLoading] = useState(false)
   useEffect(() => {
-    setNotes(notes)
-  }, [setNotes])
+    if(notes.length !==0){
+      return
+    }
+    db.notes.toArray()
+    .then(r => {
+      console.log(r)
+      setNotes(r)
+    })
+    .catch(error => {
+      alert(error.message)
+    })
+  }, [setNotes, setLoading, notes])
+
+  useEffect(()=> {
+    if(selected===-1) {
+      return
+    }
+    const changed = notes.find(note => 
+      note && note.id === selected
+    )
+    if(!changed) {
+      db.notes.delete(selected)
+    } else {
+      db.notes.update(selected, {name: changed.name, content: changed.content, date: changed.date})
+    }
+  }, [notes,selected])
 
   return (
-    <>
-      <header>
-        <SearchBox />
-      </header>
-      <main>
-        <SideBar />
-        <WorkSpace />
-      </main>
-    </>
+    !loading ?(
+      <>
+        <header>
+          <SearchBox />
+        </header>
+        <main>
+          <SideBar/>
+          <WorkSpace />
+        </main>
+      </>): 
+      <h1 className='loader'>Loading...</h1>
   );
 }
 

@@ -6,6 +6,9 @@ export const cutContent = (content:string):string => {
     if(parsedContent.length > 10) {
         return parsedContent.substring(0,10) + appender
     }
+    if(parsedContent.length === 0) {
+        return "No comment"
+    }
     return parsedContent
 }
 

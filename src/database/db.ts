@@ -15,3 +15,4 @@ class NoteDexie extends Dexie {
   }
 
 export const db = new NoteDexie();
+

@@ -1,21 +1,18 @@
-import React, { useDeferredValue, useEffect, useState } from 'react';
+import React from 'react';
 import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypesSelector';
 import "./SearchBox.style.css"
 
 function SearchBox() {
-  const [currentQuery, setCurrentQuery] = useState<string>('')
-  const defferedQuery = useDeferredValue(currentQuery)
+  const {searchQuery} = useTypedSelector(state=> state.noteReducer)
   const {setSearch} = useActions()
-  useEffect(() => {
-    setSearch(defferedQuery)
-  },[defferedQuery, setSearch])
   return (
     <div className='searchBox'>  
         <input
           className='searchBox__input'
           placeholder='Search'
-          onChange={(e) => setCurrentQuery(e.target.value)}
-          value = {currentQuery}/>
+          onChange={(e) => setSearch(e.target.value)}
+          value = {searchQuery}/>
     </div>
   );
 }

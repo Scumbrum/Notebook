@@ -20,7 +20,7 @@ header {
     background: linear-gradient(var(--paper), var(--secondary));
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     padding: 0 50px;
 }
 
@@ -31,4 +31,10 @@ body {
 
 main {
     display: flex;
+}
+
+.loader {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 48px;
 }
